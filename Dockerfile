@@ -17,5 +17,5 @@ WORKDIR /
 RUN openssl req  -new -newkey rsa:2048 -days 3650 -nodes -x509  -subj "/C=US/ST=rtmtb/L=rtmtb/O=Dis/CN=api.selfsigned.forward"  -keyout forward.key -out forward.crt && rm -rf /etc/nginx/nginx.conf
 COPY init_and_run.sh /init_and_run.sh
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-EXPOSE  80 443 3080 3443
+EXPOSE  3128
 CMD ["/usr/bin/supervisord"]
