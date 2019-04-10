@@ -1,8 +1,10 @@
 # nginx_connect - Dockerised.
 
 A patched nginx to accept CONNECT headers, as if its a forward proxy. 
+This build makes use of the work of @chobits
+Github page: https://github.com/chobits/ngx_http_proxy_connect_module
 
-In a simple incarnation the following will accept a CONNECT header and send on to a reverse proxy as if a normaly HTTP/S request. 
+In a simple incarnation the following will accept a CONNECT header and send on to a reverse proxy as if a normaly HTTP/S request. Please see linked @Chobits page for the full, original, and much better docu.
 
 In this instance the next hop reverse proxt being 10.10.10.10:8080
 
