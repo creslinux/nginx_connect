@@ -4,7 +4,7 @@ A patched nginx to accept CONNECT headers, as if its a forward proxy.
 This build makes use of the work of @chobits
 Github page: https://github.com/chobits/ngx_http_proxy_connect_module
 
-In a simple incarnation the following nginx_config will accept a CONNECT header and send on to a reverse proxy as if a normaly HTTP/S request. Please see linked @Chobits page for the full, original, and much better docu.
+In a simple incarnation the following nginx_config will accept a CONNECT header and send on to a reverse proxy as a regular HTTP/S request. Please see linked @Chobits page for the full, original, and much better docu.
 
 In this instance the next hop reverse proxy being 10.10.10.10:8080
 
@@ -29,14 +29,12 @@ http {
 
     resolver 127.0.0.11 ipv6=off;
 
-
     server {
         ##
         # Default server.
-
         listen                         3128;
 
-        # dns resolver used by forward proxying
+        # dns resolver used by forward proxying / Swarm DNS likes to be in Server. IDKW.
         resolver                       127.0.0.11 ipv6=off;
 
         # forward proxy for CONNECT request
