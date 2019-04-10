@@ -1,4 +1,4 @@
-# nginx_connect
+# nginx_connect - Dockerised.
 
 A patched nginx to accept CONNECT headers, as if its a forward proxy. 
 
