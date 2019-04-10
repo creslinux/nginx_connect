@@ -5,11 +5,7 @@ services:
     hostname:  nginx_connect
     ports:
       - "3128:3128" # Proxy port
-      - "2080:80"    # Reverse Proxy HTTP
-      - "2443:443"   # Reverse Proxy HTTPS
-      - "3080:3080"  # Forward CONNECT proxy HTTP 
-      - "3443:3443"  # Forward CONNECT proxy HTTPS 
     # entrypoint: "tail -f /dev/null" # use to keep the container open for debugging
     entrypoint: ./init_and_run.sh
     volumes:
-    - ${PWD}/../../config/nginx_forward.conf:/etc/nginx/nginx.conf
+    - nginx.conf:/etc/nginx/nginx.conf
