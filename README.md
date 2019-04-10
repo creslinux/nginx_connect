@@ -4,9 +4,9 @@ A patched nginx to accept CONNECT headers, as if its a forward proxy.
 This build makes use of the work of @chobits
 Github page: https://github.com/chobits/ngx_http_proxy_connect_module
 
-In a simple incarnation the following will accept a CONNECT header and send on to a reverse proxy as if a normaly HTTP/S request. Please see linked @Chobits page for the full, original, and much better docu.
+In a simple incarnation the following nginx_config will accept a CONNECT header and send on to a reverse proxy as if a normaly HTTP/S request. Please see linked @Chobits page for the full, original, and much better docu.
 
-In this instance the next hop reverse proxt being 10.10.10.10:8080
+In this instance the next hop reverse proxy being 10.10.10.10:8080
 
 I use this for an app that makes outbound connections via Proxy CONNECT requests to a remote API, I want to put a reverse proxy in-line to cache responses for small period of time. 
 
@@ -14,6 +14,7 @@ I use this for an app that makes outbound connections via Proxy CONNECT requests
 
 Squid can act as Forward proxy and with bump offer the same. However i found sqids minimum cache time of 1 minute to be far outside acceptable, as my use-case i wish to often only cache for 1 second. Im mainly protecting against 100's of clients wanting the same data in the same 1 second moment. 
 
+nginx_conf example. Volume mount as `/etc/nginx/nginx.conf`
 ```
 worker_processes  1;
 events {
