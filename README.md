@@ -8,6 +8,8 @@ In a simple incarnation the following nginx_config will accept a CONNECT header 
 
 In this instance the next hop reverse proxy being 10.10.10.10:8080
 
+An alternative can be to set $host for proxy_pass, this will then connect to originserver - Google as example - directly. In effect a simple ` CONNECT <> HTTP/S ` pipe for proxied clients with no proxy.
+
 I use this for an app that makes outbound connections via Proxy CONNECT requests to a remote API, I want to put a reverse proxy in-line to cache responses for small period of time. 
 
 `Client > CONNECT > nginx_connect > HTTP/S Get > nginx_reverse(caching) > HTTP/S Get(internet) > Remote API server`
