@@ -16,6 +16,11 @@ I use this for an app that makes outbound connections via Proxy CONNECT requests
 
 Squid can act as Forward proxy and with bump offer the same. However i found sqids minimum cache time of 1 minute to be far outside acceptable, as my use-case i wish to often only cache for 1 second. Im mainly protecting against 100's of clients wanting the same data in the same 1 second moment. 
 
+## Template Variables pre_start.sh
+User have the opportunity to mount their `nginx.conf` as `/etc/nginx/nginx.conf.template` and run any changes against this via a script named `/pre_start.sh`. This is a means to work around swarm config files being read-only.
+
+if `/pre_start.sh` exists i.e user has mounted it, it is run prior to startup. I use this to modify and move the nginx.conf.template to nginx.conf
+
 nginx_conf example. Volume mount as `/etc/nginx/nginx.conf`
 ```
 worker_processes  1;
