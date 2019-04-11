@@ -8,8 +8,7 @@ if [ -f /pre_start.sh ]; then
    bash /pre_start.sh
 fi
 
-# If user has mounted conf as .conf..template not conf move to .conf 
-# Responsibility is on user to have modified the file prior to this point, via pre_start script. 
+# if there is not a nginx.conf at this point, move the template file to it. 
 if [ ! -f /etc/nginx/nginx.conf ]; then
   cp /etc/nginx/nginx.conf.template /etc/nginx/nginx.conf
 fi 
